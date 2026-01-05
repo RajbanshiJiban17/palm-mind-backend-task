@@ -8,6 +8,9 @@ import ollama
 from pydantic import BaseModel, ConfigDict, EmailStr, ValidationError
 
 from app.utils.db import save_booking_record
+import os 
+
+MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:1b")
 
 
 class BookingDetails(BaseModel):
@@ -38,7 +41,7 @@ BOOKING_SYSTEM_PROMPT = (
 def extract_booking_details(user_query: str) -> Optional[BookingDetails]:
     try:
         response = ollama.chat(
-            model="llama3",
+            model=MODEL,
             messages=[
                 {"role": "system", "content": BOOKING_SYSTEM_PROMPT},
                 {"role": "user", "content": user_query},
