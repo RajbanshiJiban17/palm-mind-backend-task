@@ -14,3 +14,12 @@ I built two APIs:
 ### 1) Start Redis + Qdrant
 ```bash
 docker compose up -d
+
+
+“Default model: llama3.2:1b (low RAM friendly). To use another model, change OLLAMA_MODEL.”
+​
+
+“If you get model requires more system memory, pick a smaller model tag.”
+​
+
+“When calling Ollama, request uses JSON body and stream:false to avoid streaming parsing issues.”
